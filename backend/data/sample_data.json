@@ -1,0 +1,198 @@
+{
+  "nodes": [
+    {
+      "id": "hub-root",
+      "label": "Root Cluster Alpha",
+      "category": "Hub",
+      "uri": "urn:lifegraph:hub:root-01",
+      "description": "Primary Topological Nexus and Central Graph Routing Vertex connecting enterprise clusters.",
+      "vector_weight": 1.0,
+      "attributes": { "tier": "Primary", "status": "Online", "throughput": "1.2 GB/s" }
+    },
+    {
+      "id": "person-turing",
+      "label": "Dr. Alan Turing",
+      "category": "Person",
+      "uri": "urn:lifegraph:person:7721",
+      "description": "Chief Research Fellow in Neural Computing, Mathematical Cryptanalysis, and Graph Optimization algorithms.",
+      "vector_weight": 0.984,
+      "attributes": { "role": "Fellow", "hIndex": 68, "cluster": "AI Theory", "clearance": "Level 5" }
+    },
+    {
+      "id": "person-vance",
+      "label": "Dr. Elena Vance",
+      "category": "Person",
+      "uri": "urn:lifegraph:person:7722",
+      "description": "Lead Graph Architect and Distributed Systems Scientist specializing in high-throughput graph partitioning.",
+      "vector_weight": 0.965,
+      "attributes": { "role": "Architect", "team": "Core Systems", "clearance": "Level 5" }
+    },
+    {
+      "id": "person-lin",
+      "label": "Dr. Sophia Lin",
+      "category": "Person",
+      "uri": "usr:fellow:lin-482",
+      "description": "Author of 14 peer-reviewed publications in hierarchical graph-vector RAG architectures and HNSW indexing.",
+      "vector_weight": 0.897,
+      "attributes": { "role": "Researcher", "domain": "HNSW Vector Indexing", "status": "Active" }
+    },
+    {
+      "id": "org-graphlabs",
+      "label": "DeepMind Graph Labs",
+      "category": "Organization",
+      "uri": "urn:lifegraph:org:0102",
+      "description": "Enterprise AI Lab pioneering Graph Neural Networks, Multi-Hop Relational Reasoning, and Vector Embeddings.",
+      "vector_weight": 0.941,
+      "attributes": { "founded": 2018, "headquarters": "London", "nodesManaged": "45M", "type": "Research Lab" }
+    },
+    {
+      "id": "org-mit",
+      "label": "MIT CSAIL Network",
+      "category": "Organization",
+      "uri": "urn:lifegraph:org:mit:44",
+      "description": "Academic collaborative research division on sparse graphs, topological data analysis, and distributed graph theory.",
+      "vector_weight": 0.88,
+      "attributes": { "type": "Academic Institution", "partnerships": 28, "jurisdiction": "US-MA" }
+    },
+    {
+      "id": "org-zurich",
+      "label": "Zurich Quantum Intelligence Laboratory",
+      "category": "Organization",
+      "uri": "loc:org:zurich-091",
+      "description": "Specialized research entity focused on distributed graph vector computation, quantum annealers, and sparse matrix factorization.",
+      "vector_weight": 0.968,
+      "attributes": { "qubits": 128, "specialization": "Quantum Annealing Algorithms", "region": "EU-CH" }
+    },
+    {
+      "id": "product-core",
+      "label": "NeptuneVector Core",
+      "category": "Product",
+      "uri": "urn:lifegraph:prod:9941",
+      "description": "Enterprise distributed vector engine with native graph indices and sub-millisecond multi-hop graph retrieval.",
+      "vector_weight": 0.912,
+      "attributes": { "version": "2.4.0-rc2", "license": "Enterprise", "memory": "128 GB", "engine": "Dual Graph-Vector" }
+    },
+    {
+      "id": "product-hnsw",
+      "label": "HNSW Neural Engine v3",
+      "category": "Product",
+      "uri": "prod:engine:vector-03",
+      "description": "In-memory vector index optimizer supporting dynamic continuous subgraph partitioning and high-dimensional cosine search.",
+      "vector_weight": 0.934,
+      "attributes": { "indexType": "HNSW", "M": 16, "efSearch": 100, "efConstruction": 200 }
+    },
+    {
+      "id": "event-symposium",
+      "label": "Quantum Leap 2026",
+      "category": "Event",
+      "uri": "urn:lifegraph:event:5512",
+      "description": "Global symposium on Graph AI, high-dimensional vector embeddings, and autonomous knowledge fabric architectures.",
+      "vector_weight": 0.898,
+      "attributes": { "date": "2026-11-18", "attendees": 3400, "format": "Hybrid", "venue": "Zurich Kongresshaus" }
+    },
+    {
+      "id": "event-partition",
+      "label": "Cluster Re-partitioning",
+      "category": "Event",
+      "uri": "urn:lifegraph:event:5513",
+      "description": "Scheduled automated sharding operation across 4 high-availability sub-clusters with zero downtime guarantees.",
+      "vector_weight": 0.842,
+      "attributes": { "execution": "Automated", "impact": "Zero-Downtime", "shards": 4 }
+    },
+    {
+      "id": "loc-zurich",
+      "label": "Zurich Data Cluster",
+      "category": "Location",
+      "uri": "loc:zurich:03",
+      "description": "Tier-4 subterranean European data repository, high-performance computing node, and low-latency storage zone.",
+      "vector_weight": 0.905,
+      "attributes": { "region": "eu-central-1", "latencyP99": "1.4ms", "power": "100% Hydroelectric" }
+    },
+    {
+      "id": "loc-geneva",
+      "label": "Geneva Fiber Hub",
+      "category": "Location",
+      "uri": "loc:geneva:01",
+      "description": "High-bandwidth dark-fiber junction linking European research centers with 400 Gbps interconnect capacity.",
+      "vector_weight": 0.875,
+      "attributes": { "bandwidth": "400 Gbps", "status": "Optimal", "carrier": "Swiss Interconnect" }
+    },
+    {
+      "id": "doc-spec-2026",
+      "label": "LifeGraph Architecture Whitepaper",
+      "category": "Document",
+      "uri": "urn:lifegraph:doc:whitepaper-2026",
+      "description": "Comprehensive technical specification for dual-engine graph topology matching with continuous vector projection.",
+      "vector_weight": 0.86,
+      "attributes": { "format": "PDF/Markdown", "classification": "Public Whitepaper", "pages": 48 }
+    }
+  ],
+  "edges": [
+    { "id": "e-hub-turing", "source": "hub-root", "target": "person-turing", "label": "COLLABORATES_WITH", "weight": 0.95 },
+    { "id": "e-hub-vance", "source": "hub-root", "target": "person-vance", "label": "MANAGED_BY", "weight": 0.98 },
+    { "id": "e-hub-org", "source": "hub-root", "target": "org-graphlabs", "label": "HOSTED_AT", "weight": 0.92 },
+    { "id": "e-hub-prod", "source": "hub-root", "target": "product-core", "label": "POWERS", "weight": 0.99 },
+    { "id": "e-hub-loc", "source": "hub-root", "target": "loc-zurich", "label": "LOCATED_IN", "weight": 0.91 },
+    { "id": "e-vance-graphlabs", "source": "person-vance", "target": "org-graphlabs", "label": "COLLABORATES_WITH", "weight": 0.96 },
+    { "id": "e-graphlabs-prod", "source": "org-graphlabs", "target": "product-core", "label": "INVESTED_IN", "weight": 0.94 },
+    { "id": "e-turing-prod", "source": "person-turing", "target": "product-core", "label": "PURCHASED", "weight": 0.88 },
+    { "id": "e-graphlabs-mit", "source": "org-graphlabs", "target": "org-mit", "label": "COLLABORATES_WITH", "weight": 0.85 },
+    { "id": "e-turing-symposium", "source": "person-turing", "target": "event-symposium", "label": "KEYNOTE_AT", "weight": 0.93 },
+    { "id": "e-symposium-loc", "source": "event-symposium", "target": "loc-zurich", "label": "LOCATED_IN", "weight": 0.90 },
+    { "id": "e-zurich-org", "source": "org-zurich", "target": "loc-zurich", "label": "LOCATED_IN", "weight": 0.95 },
+    { "id": "e-zurich-hnsw", "source": "org-zurich", "target": "product-hnsw", "label": "DEVELOPED", "weight": 0.92 },
+    { "id": "e-lin-hnsw", "source": "person-lin", "target": "product-hnsw", "label": "COLLABORATES_WITH", "weight": 0.89 },
+    { "id": "e-loc-geneva", "source": "loc-zurich", "target": "loc-geneva", "label": "CONNECTED_TO", "weight": 0.97 },
+    { "id": "e-event-partition", "source": "product-core", "target": "event-partition", "label": "TRIGGERED_BY", "weight": 0.86 },
+    { "id": "e-doc-vance", "source": "person-vance", "target": "doc-spec-2026", "label": "AUTHORED", "weight": 0.94 },
+    { "id": "e-doc-prod", "source": "doc-spec-2026", "target": "product-core", "label": "SPECIFIES", "weight": 0.92 }
+  ],
+  "data_sources": [
+    { "name": "Neo4j Primary Graph DB", "type": "Neo4j Enterprise", "status": "Connected", "endpoint": "bolt://127.0.0.1:7687", "records_count": 14892430 },
+    { "name": "Milvus Vector Cluster", "type": "HNSW Vector DB", "status": "Connected", "endpoint": "grpc://127.0.0.1:19530", "records_count": 4250000 },
+    { "name": "Amazon S3 Graph Snapshots", "type": "Object Storage", "status": "Connected", "endpoint": "s3://lifegraph-analytics-lake", "records_count": 89421105 },
+    { "name": "Kafka Event Pipeline", "type": "Streaming Event Bus", "status": "Connected", "endpoint": "kafka://127.0.0.1:9092", "records_count": 184200 },
+    { "name": "PostgreSQL Metadata Store", "type": "Relational DB", "status": "Connected", "endpoint": "postgresql://127.0.0.1:5432/lifegraph_meta", "records_count": 52100 }
+  ],
+  "incidents": [
+    {
+      "title": "Topology Frequency Anomaly",
+      "severity": "warning",
+      "category": "anomaly",
+      "target_entity_id": "usr:trans:99120",
+      "description": "Target entity formed 1,420 rapid edge mutations in under 3 minutes, triggering rate threshold alerts.",
+      "status": "quarantined"
+    },
+    {
+      "title": "Vector Embedding Drift Detected",
+      "severity": "info",
+      "category": "drift",
+      "target_entity_id": "prod:engine:vector-03",
+      "description": "Cosine similarity distribution drifted by +14.3% following incremental document re-indexing.",
+      "status": "resolved"
+    }
+  ],
+  "query_history": [
+    {
+      "query_text": "g.V().hasLabel('Person').has('name', 'Elena Vance').outE('COLLABORATES_WITH').inV().path()",
+      "dialect": "gremlin",
+      "execution_time_ms": 12.4,
+      "status": "success",
+      "rows_returned": 4
+    },
+    {
+      "query_text": "SELECT ?person ?org WHERE { ?person <urn:lifegraph:collaborates_with> ?org } LIMIT 10",
+      "dialect": "sparql",
+      "execution_time_ms": 18.1,
+      "status": "success",
+      "rows_returned": 6
+    },
+    {
+      "query_text": "MATCH (p:Person)-[:COLLABORATES_WITH]->(o:Organization) RETURN p.name, o.name",
+      "dialect": "cypher",
+      "execution_time_ms": 8.9,
+      "status": "success",
+      "rows_returned": 5
+    }
+  ]
+}
