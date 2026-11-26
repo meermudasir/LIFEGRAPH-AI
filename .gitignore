@@ -34,3 +34,7 @@ Thumbs.db
 
 # Log files
 *.log
+
+# Local backups
+_backup_auth/
+_backup_stage0/

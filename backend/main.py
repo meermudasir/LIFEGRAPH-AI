@@ -14,6 +14,7 @@ from backend.api import (
     query_router,
     intelligence_router,
     analytics_router,
+    auth_router,
 )
 
 # Configure logging
@@ -28,10 +29,13 @@ logger = logging.getLogger("lifegraph-ai")
 async def lifespan(app: FastAPI):
     """
     Application lifespan manager:
-    - Runs on startup: Initializes database tables and seeds demo data if empty.
+    - Runs on startup: Validates production security, initializes database tables and seeds demo data if empty.
     - Runs on shutdown: Cleanly closes resources.
     """
     logger.info("Initializing LifeGraph AI Backend...")
+    # 1. Enforce strict production security checks before doing any work
+    settings.validate_production_security()
+
     try:
         init_db()
         logger.info("Database tables verified and initialized.")
@@ -127,7 +131,11 @@ def health_check():
 # Mounted under both /api and /api/v1 for full frontend and REST compatibility
 # ------------------------------------------------------------------------------
 
+# Mount auth router directly for top-level /auth/* paths (e.g. /auth/login, /auth/register)
+app.include_router(auth_router)
+
 api_routers = [
+    auth_router,
     dashboard_router,
     graph_router,
     vector_router,

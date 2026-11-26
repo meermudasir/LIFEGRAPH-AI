@@ -20,7 +20,7 @@
     },
     {
       "id": "person-vance",
-      "label": "Dr. Elena Vance",
+      "label": "Mudasir Meer",
       "category": "Person",
       "uri": "urn:lifegraph:person:7722",
       "description": "Lead Graph Architect and Distributed Systems Scientist specializing in high-throughput graph partitioning.",

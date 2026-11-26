@@ -278,3 +278,42 @@ class StorageMetricsResponse(BaseModel):
     wal_cache_gb: float
     total_capacity_gb: float
     utilization_percentage: float
+
+
+# ------------------------------------------------------------------------------
+# AUTHENTICATION SCHEMAS
+# ------------------------------------------------------------------------------
+
+class UserRegisterRequest(BaseModel):
+    full_name: str = Field(..., min_length=2, max_length=255, description="Full Name of user")
+    email: str = Field(..., min_length=5, max_length=255, description="Valid email address")
+    password: str = Field(..., min_length=8, max_length=128, description="Password (at least 8 characters)")
+
+
+class UserLoginRequest(BaseModel):
+    email: str = Field(..., max_length=255, description="Registered email address")
+    password: str = Field(..., max_length=128, description="User password")
+    remember_me: Optional[bool] = Field(False, description="Extend session duration")
+
+
+class UserResponse(BaseModel):
+    id: str
+    email: str
+    full_name: str
+    is_active: bool
+    created_at: DateTime
+
+    class Config:
+        from_attributes = True
+        orm_mode = True
+
+
+class AuthTokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    user: UserResponse
+
+
+class MessageResponse(BaseModel):
+    message: str
+    status: str = "success"

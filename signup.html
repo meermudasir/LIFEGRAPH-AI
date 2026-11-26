@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LifeGraph AI – User Registration">
+  <title>Create Account – LifeGraph AI</title>
+
+  <!-- External Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Core Theme Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Dedicated Auth Page Layout */
+    body.auth-body {
+      background-color: var(--bg-main, #080D18);
+      background-image:
+        radial-gradient(circle at 15% 50%, rgba(34, 211, 238, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 45%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-primary, #E5EDF7);
+      margin: 0;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .auth-card {
+      background: var(--bg-panel, #111C2D);
+      border: 1px solid var(--border-color, #26364B);
+      border-radius: 12px;
+      padding: 36px 32px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .auth-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      text-decoration: none;
+    }
+
+    .auth-brand-icon {
+      font-size: 1.8rem;
+      color: var(--color-primary-cyan, #22D3EE);
+    }
+
+    .auth-brand-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.5px;
+    }
+
+    .auth-brand-badge {
+      background: var(--color-primary-cyan, #22D3EE);
+      color: #080D18;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .auth-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary, #E5EDF7);
+      margin: 0 0 6px 0;
+    }
+
+    .auth-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-secondary, #94A3B8);
+      margin: 0;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-primary, #E5EDF7);
+      margin-bottom: 7px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--text-muted, #64748B);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    .auth-input {
+      width: 100%;
+      background: var(--bg-input, #0A111E);
+      border: 1px solid var(--border-color, #26364B);
+      border-radius: 8px;
+      padding: 11px 42px 11px 38px;
+      color: var(--text-primary, #E5EDF7);
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--color-primary-cyan, #22D3EE);
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+      background: #0E1726;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--text-muted, #64748B);
+      cursor: pointer;
+      padding: 4px;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .toggle-password:hover {
+      color: var(--color-primary-cyan, #22D3EE);
+    }
+
+    .form-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted, #64748B);
+      margin-top: 5px;
+      display: block;
+    }
+
+    /* Submit Button */
+    .btn-auth-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--color-primary-cyan, #22D3EE) 0%, var(--color-secondary-blue, #3B82F6) 100%);
+      color: #080D18;
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .btn-auth-submit:hover:not(:disabled) {
+      box-shadow: 0 6px 20px rgba(34, 211, 238, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-auth-submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    /* Alerts */
+    .auth-alert {
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      margin-bottom: 20px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      line-height: 1.4;
+    }
+
+    .auth-alert.danger {
+      display: flex;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #FCA5A5;
+    }
+
+    .auth-alert.success {
+      display: flex;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #86EFAC;
+    }
+
+    /* Footer Links */
+    .auth-footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.85rem;
+      color: var(--text-secondary, #94A3B8);
+    }
+
+    .auth-footer a {
+      color: var(--color-primary-cyan, #22D3EE);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .auth-footer a:hover {
+      text-decoration: underline;
+      color: #38BDF8;
+    }
+
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted, #64748B);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .back-home:hover {
+      color: var(--text-primary, #E5EDF7);
+    }
+  </style>
+</head>
+<body class="auth-body">
+
+  <div class="auth-container">
+
+    <div class="auth-card">
+
+      <!-- Brand & Header -->
+      <div class="auth-header">
+        <a href="index.html" class="auth-brand" aria-label="LifeGraph AI Home">
+          <i class="fa-solid fa-circle-nodes auth-brand-icon"></i>
+          <span class="auth-brand-name">LifeGraph</span>
+          <span class="auth-brand-badge">AI</span>
+        </a>
+        <h2 class="auth-title">Create Account</h2>
+        <p class="auth-subtitle">Join LifeGraph AI and start building your knowledge graph</p>
+      </div>
+
+      <!-- Feedback Alert Banner -->
+      <div id="auth-alert" class="auth-alert" role="alert" aria-live="polite">
+        <i id="alert-icon" class="fa-solid fa-circle-exclamation"></i>
+        <span id="alert-message"></span>
+      </div>
+
+      <!-- Signup Form -->
+      <form id="signup-form" novalidate>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullname" class="form-label">Full Name</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user input-icon"></i>
+            <input
+              type="text"
+              id="fullname"
+              name="fullname"
+              class="auth-input"
+              placeholder="e.g. Mudasir Reyaz or Dr. Alan Turing"
+              required
+              autocomplete="name"
+              autofocus>
+          </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="auth-input"
+              placeholder="name@company.com or university"
+              required
+              autocomplete="email">
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="auth-input"
+              placeholder="At least 8 characters"
+              required
+              autocomplete="new-password">
+            <button
+              type="button"
+              id="btn-toggle-password"
+              class="toggle-password"
+              aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye" id="toggle-icon"></i>
+            </button>
+          </div>
+          <span class="form-hint">Must be at least 8 characters long</span>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div class="form-group">
+          <label for="confirm-password" class="form-label">Confirm Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-shield-check input-icon"></i>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm_password"
+              class="auth-input"
+              placeholder="Re-enter your password"
+              required
+              autocomplete="new-password">
+            <button
+              type="button"
+              id="btn-toggle-confirm"
+              class="toggle-password"
+              aria-label="Toggle confirm password visibility">
+              <i class="fa-solid fa-eye" id="toggle-confirm-icon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="btn-submit" class="btn-auth-submit">
+          <span id="btn-text">Create Account</span>
+          <i class="fa-solid fa-user-plus" id="btn-icon"></i>
+        </button>
+
+      </form>
+
+      <!-- Footer navigation -->
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign In</a>
+      </div>
+
+    </div>
+
+    <!-- Return to Main Dashboard -->
+    <a href="index.html" class="back-home">
+      <i class="fa-solid fa-arrow-left"></i> Return to Graph Explorer
+    </a>
+
+  </div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const signupForm = document.getElementById('signup-form');
+      const nameInput = document.getElementById('fullname');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirm-password');
+      const btnSubmit = document.getElementById('btn-submit');
+      const btnText = document.getElementById('btn-text');
+      const btnIcon = document.getElementById('btn-icon');
+      const alertBox = document.getElementById('auth-alert');
+      const alertMessage = document.getElementById('alert-message');
+      const alertIcon = document.getElementById('alert-icon');
+
+      const togglePasswordBtn = document.getElementById('btn-toggle-password');
+      const toggleIcon = document.getElementById('toggle-icon');
+      const toggleConfirmBtn = document.getElementById('btn-toggle-confirm');
+      const toggleConfirmIcon = document.getElementById('toggle-confirm-icon');
+
+      const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+      // Toggle Passwords Visibility
+      togglePasswordBtn.addEventListener('click', () => {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        toggleIcon.className = isPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+      });
+
+      toggleConfirmBtn.addEventListener('click', () => {
+        const isPassword = confirmPasswordInput.type === 'password';
+        confirmPasswordInput.type = isPassword ? 'text' : 'password';
+        toggleConfirmIcon.className = isPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+      });
+
+      // Show Alert Message
+      function showAlert(message, type = 'danger') {
+        alertBox.className = `auth-alert ${type}`;
+        alertMessage.textContent = message;
+        alertIcon.className = type === 'success'
+          ? 'fa-solid fa-circle-check'
+          : 'fa-solid fa-circle-exclamation';
+        alertBox.style.display = 'flex';
+      }
+
+      function clearAlert() {
+        alertBox.style.display = 'none';
+        alertMessage.textContent = '';
+      }
+
+      // Resolve backend API URL
+      function getApiBaseUrl() {
+        if (window.LIFEGRAPH_API_BASE) {
+          return window.LIFEGRAPH_API_BASE.replace(/\/+$/, '');
+        }
+        if (window.location.port === '8000') {
+          return window.location.origin;
+        }
+        const hostname = window.location.hostname && window.location.hostname !== ''
+          ? window.location.hostname
+          : '127.0.0.1';
+        return `http://${hostname}:8000`;
+      }
+
+      // Handle Signup Form Submission
+      signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearAlert();
+
+        const fullName = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        // Validation Checks
+        if (!fullName || fullName.length < 2) {
+          showAlert('Please enter your full name (at least 2 characters).');
+          nameInput.focus();
+          return;
+        }
+
+        if (!email || !EMAIL_REGEX.test(email)) {
+          showAlert('Please enter a valid email address.');
+          emailInput.focus();
+          return;
+        }
+
+        if (!password || password.length < 8) {
+          showAlert('Password must be at least 8 characters long.');
+          passwordInput.focus();
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          showAlert('Passwords do not match. Please re-enter.');
+          confirmPasswordInput.focus();
+          return;
+        }
+
+        // Set Loading State
+        btnSubmit.disabled = true;
+        btnText.textContent = 'Creating Account...';
+        btnIcon.className = 'fa-solid fa-spinner fa-spin';
+
+        try {
+          const baseUrl = getApiBaseUrl();
+          const response = await fetch(`${baseUrl}/auth/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include', // Ensures HttpOnly cookie is attached
+            body: JSON.stringify({ full_name: fullName, email, password }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            // Store token and user details for client session management
+            if (data.access_token) {
+              localStorage.setItem('lifegraph_token', data.access_token);
+            }
+            if (data.user) {
+              localStorage.setItem('lifegraph_user', JSON.stringify(data.user));
+            }
+
+            showAlert('Account created successfully! Loading your intelligence dashboard...', 'success');
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 800);
+          } else {
+            const errorMsg = data.detail || 'Registration failed. Please check your information and try again.';
+            showAlert(errorMsg, 'danger');
+          }
+        } catch (err) {
+          console.error('[LifeGraph Registration Error]:', err);
+          showAlert('Network connection error. Ensure the FastAPI backend server is running.', 'danger');
+        } finally {
+          btnSubmit.disabled = false;
+          btnText.textContent = 'Create Account';
+          btnIcon.className = 'fa-solid fa-user-plus';
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

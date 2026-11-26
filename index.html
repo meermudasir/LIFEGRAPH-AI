@@ -14,6 +14,8 @@
 
   <!-- Link to Future External JavaScript Controller (Phase 2 & 3) -->
   <script src="script.js" defer></script>
+  <!-- Authentication Controller -->
+  <script src="auth.js" defer></script>
 </head>
 <body class="dashboard-body">
 
@@ -26,7 +28,7 @@
          SECTION A: LEFT SIDEBAR – SYSTEM OVERVIEW & NAVIGATION
          ======================================================================== -->
     <aside class="sidebar" id="sidebar" aria-label="System Navigation">
-      
+
       <!-- Platform Logo and Branding -->
       <div class="sidebar-header" id="sidebar-header">
         <div class="brand-logo" id="brand-logo">
@@ -135,7 +137,7 @@
            SECTION B: TOP HEADER
            ====================================================================== -->
       <header class="top-header" id="top-header" aria-label="Top Navigation Bar">
-        
+
         <!-- Header Branding and Title -->
         <div class="header-branding" id="header-branding">
           <h1 class="platform-title" id="platform-title">LifeGraph AI</h1>
@@ -147,12 +149,12 @@
           <form class="search-form" id="global-search-form" role="search" action="#" method="get">
             <div class="search-input-wrapper">
               <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-              <input 
-                type="search" 
-                id="global-search-input" 
-                name="global-query" 
-                class="search-input" 
-                placeholder="Search graph entities, vector embeddings, node IDs, or queries..." 
+              <input
+                type="search"
+                id="global-search-input"
+                name="global-query"
+                class="search-input"
+                placeholder="Search graph entities, vector embeddings, node IDs, or queries..."
                 aria-label="Search entities, embeddings, and queries">
               <kbd class="search-hotkey" id="search-hotkey" title="Keyboard Shortcut">Ctrl + K</kbd>
             </div>
@@ -161,7 +163,7 @@
 
         <!-- Header Actions: Cluster Environment, Notifications, User Profile -->
         <div class="header-actions" id="header-actions">
-          
+
           <!-- Environment Cluster Badge -->
           <div class="env-badge-container" id="env-badge-container">
             <span class="env-badge prod" id="env-badge">
@@ -342,7 +344,7 @@
              SECTION D: MAIN GRAPH VISUALIZATION (GRAPH + VECTOR SPACE)
              ==================================================================== -->
         <section class="panel graph-panel" id="graph-panel" aria-label="Graph and Vector Space Visualization">
-          
+
           <!-- Panel Header and Controls -->
           <div class="panel-header" id="graph-panel-header">
             <div class="panel-title-group">
@@ -371,10 +373,10 @@
 
           <!-- Node Categories Filter & Legend Bar -->
           <div class="graph-filters-bar" id="graph-filters-bar">
-            
+
             <div class="filter-group node-categories" id="node-categories-group">
               <span class="filter-label"><i class="fa-solid fa-filter" aria-hidden="true"></i> Node Categories:</span>
-              
+
               <!-- Category: Person -->
               <label class="category-tag category-person" for="filter-person">
                 <input type="checkbox" id="filter-person" name="category-filter" value="Person" checked>
@@ -430,7 +432,7 @@
 
           <!-- Graph Canvas Container (Placeholder for WebGL, D3.js, Cytoscape, or Three.js) -->
           <div class="graph-canvas-container" id="graph-canvas-container" tabindex="0" role="region" aria-label="Interactive Graph Canvas Placeholder">
-            
+
             <!-- Central Connected Nodes Demo Placeholder Structure -->
             <div class="central-nodes-mock" id="central-nodes-mock" aria-hidden="true">
               <div class="mock-node central-hub" id="hub-node-root" title="Central Cluster Hub">
@@ -509,7 +511,7 @@
                SECTION E: QUERY CONSOLE
                ================================================================== -->
           <section class="panel query-console-panel" id="query-console-panel" aria-label="Graph Query Console">
-            
+
             <div class="panel-header" id="query-panel-header">
               <div class="panel-title-group">
                 <i class="fa-solid fa-code panel-title-icon" aria-hidden="true"></i>
@@ -518,30 +520,30 @@
 
               <!-- Query Language Switcher Tabs -->
               <div class="query-tabs" id="query-tabs" role="tablist" aria-label="Query Dialect Selection">
-                <button 
-                  type="button" 
-                  class="tab-btn active" 
-                  id="tab-gremlin" 
-                  role="tab" 
-                  aria-selected="true" 
+                <button
+                  type="button"
+                  class="tab-btn active"
+                  id="tab-gremlin"
+                  role="tab"
+                  aria-selected="true"
                   aria-controls="query-editor-container">
                   <i class="fa-solid fa-terminal" aria-hidden="true"></i> Gremlin
                 </button>
-                <button 
-                  type="button" 
-                  class="tab-btn" 
-                  id="tab-sparql" 
-                  role="tab" 
-                  aria-selected="false" 
+                <button
+                  type="button"
+                  class="tab-btn"
+                  id="tab-sparql"
+                  role="tab"
+                  aria-selected="false"
                   aria-controls="query-editor-container">
                   <i class="fa-solid fa-project-diagram" aria-hidden="true"></i> SPARQL
                 </button>
-                <button 
-                  type="button" 
-                  class="tab-btn" 
-                  id="tab-cypher" 
-                  role="tab" 
-                  aria-selected="false" 
+                <button
+                  type="button"
+                  class="tab-btn"
+                  id="tab-cypher"
+                  role="tab"
+                  aria-selected="false"
                   aria-controls="query-editor-container">
                   <i class="fa-solid fa-database" aria-hidden="true"></i> Cypher (OpenCypher)
                 </button>
@@ -560,10 +562,10 @@
 
             <!-- Query Input Area -->
             <div class="query-editor-container" id="query-editor-container" role="tabpanel" aria-labelledby="tab-gremlin">
-              
+
               <div class="editor-toolbar" id="editor-toolbar">
                 <span class="editor-dialect" id="active-dialect-label">Active: Apache TinkerPop Gremlin 3.7</span>
-                <span class="editor-limit">Limit: 
+                <span class="editor-limit">Limit:
                   <select id="query-limit-select" class="form-select-sm">
                     <option value="50">50 rows</option>
                     <option value="100" selected>100 rows</option>
@@ -576,12 +578,12 @@
               <!-- Query Input Textarea -->
               <div class="editor-input-wrapper">
                 <label for="query-input-area" class="visually-hidden">Graph Query Input Editor</label>
-                <textarea 
-                  id="query-input-area" 
-                  name="query-code" 
-                  class="query-textarea" 
-                  rows="6" 
-                  spellcheck="false" 
+                <textarea
+                  id="query-input-area"
+                  name="query-code"
+                  class="query-textarea"
+                  rows="6"
+                  spellcheck="false"
                   placeholder="// Enter Gremlin, SPARQL, or Cypher query here...&#10;g.V().hasLabel('Person').has('name', 'Elena Vance')&#10;  .outE('COLLABORATES_WITH')&#10;  .inV().hasLabel('Organization')&#10;  .path().by('name')">g.V().hasLabel('Person').has('name', 'Elena Vance')
   .outE('COLLABORATES_WITH')
   .inV().hasLabel('Organization')
@@ -683,7 +685,7 @@
                  SECTION F: K-HOP EXPLORER
                  ================================================================ -->
             <section class="panel khop-panel" id="khop-panel" aria-label="K-Hop Neighborhood Exploration">
-              
+
               <div class="panel-header" id="khop-panel-header">
                 <div class="panel-title-group">
                   <i class="fa-solid fa-circle-nodes panel-title-icon" aria-hidden="true"></i>
@@ -693,17 +695,17 @@
               </div>
 
               <div class="khop-controls" id="khop-controls">
-                
+
                 <!-- Target Node Identifier Input -->
                 <div class="control-row">
                   <label for="khop-target-node" class="control-label">Root Node ID / URI:</label>
                   <div class="input-with-action">
-                    <input 
-                      type="text" 
-                      id="khop-target-node" 
-                      name="target-node-id" 
-                      class="form-input" 
-                      value="urn:lifegraph:person:7721" 
+                    <input
+                      type="text"
+                      id="khop-target-node"
+                      name="target-node-id"
+                      class="form-input"
+                      value="urn:lifegraph:person:7721"
                       placeholder="e.g. urn:lifegraph:node:1234">
                     <button type="button" class="btn btn-secondary btn-sm" id="btn-khop-pick-canvas" title="Pick node from canvas">
                       <i class="fa-solid fa-crosshairs" aria-hidden="true"></i> Pick
@@ -715,7 +717,7 @@
                 <div class="control-row">
                   <span class="control-label">Neighborhood Depth (Hops):</span>
                   <div class="hop-selection-group" id="hop-selection-group" role="radiogroup" aria-label="Select Hop Radius">
-                    
+
                     <label class="hop-radio-label active" for="hop-1">
                       <input type="radio" id="hop-1" name="khop-depth" value="1" checked>
                       <span class="hop-pill">
@@ -781,7 +783,7 @@
                  SECTION G: VECTOR SEARCH
                  ================================================================ -->
             <section class="panel vector-search-panel" id="vector-search-panel" aria-label="Vector Semantic Similarity Search">
-              
+
               <div class="panel-header" id="vector-search-header">
                 <div class="panel-title-group">
                   <i class="fa-solid fa-magnifying-glass-chart panel-title-icon" aria-hidden="true"></i>
@@ -791,18 +793,18 @@
               </div>
 
               <div class="vector-search-controls" id="vector-search-controls">
-                
+
                 <!-- Search Input Area -->
                 <div class="control-row">
                   <label for="vector-search-input" class="control-label">Semantic Query or Prompt:</label>
                   <div class="search-input-wrapper">
                     <i class="fa-solid fa-quote-left search-icon" aria-hidden="true"></i>
-                    <input 
-                      type="text" 
-                      id="vector-search-input" 
-                      name="vector-query" 
-                      class="form-input" 
-                      placeholder="e.g. Find research institutions collaborating on graph neural networks..." 
+                    <input
+                      type="text"
+                      id="vector-search-input"
+                      name="vector-query"
+                      class="form-input"
+                      placeholder="e.g. Find research institutions collaborating on graph neural networks..."
                       value="Quantum graph optimization algorithms in distributed clusters">
                   </div>
                 </div>
@@ -813,17 +815,17 @@
                     <label for="similarity-threshold" class="control-label">Similarity Threshold:</label>
                     <span class="threshold-display" id="threshold-val-display">&ge; 0.85</span>
                   </div>
-                  <input 
-                    type="range" 
-                    id="similarity-threshold" 
-                    name="similarity-threshold" 
-                    class="form-range" 
-                    min="0.50" 
-                    max="1.00" 
-                    step="0.01" 
-                    value="0.85" 
-                    aria-valuemin="0.50" 
-                    aria-valuemax="1.00" 
+                  <input
+                    type="range"
+                    id="similarity-threshold"
+                    name="similarity-threshold"
+                    class="form-range"
+                    min="0.50"
+                    max="1.00"
+                    step="0.01"
+                    value="0.85"
+                    aria-valuemin="0.50"
+                    aria-valuemax="1.00"
                     aria-valuenow="0.85">
                   <div class="range-labels">
                     <span>0.50 (Broad)</span>
@@ -834,7 +836,7 @@
 
                 <!-- Top-K Selection and Search Mode -->
                 <div class="control-row inline-row">
-                  
+
                   <!-- Top-K Selection -->
                   <div class="inline-control">
                     <label for="top-k-select" class="control-label-sm">Top-K Results:</label>
@@ -877,7 +879,7 @@
                 </div>
 
                 <div class="vector-results-list" id="vector-results-list">
-                  
+
                   <!-- Result Item 1 -->
                   <article class="vector-result-card" id="vector-res-1">
                     <div class="result-card-header">
@@ -941,21 +943,21 @@
              SECTION I: AI INTELLIGENCE PANEL
              ==================================================================== -->
         <section class="panel ai-intelligence-panel" id="ai-intelligence-panel" aria-label="AI Intelligence and Graph Machine Learning">
-          
+
           <div class="panel-header" id="ai-panel-header">
             <div class="panel-title-group">
               <i class="fa-solid fa-wand-magic-sparkles panel-title-icon" aria-hidden="true"></i>
               <h2 class="panel-title">AI Intelligence Engine</h2>
               <span class="panel-subtitle-tag">Autonomous Graph-Vector Synthesis</span>
             </div>
-            
+
             <div class="ai-status-summary">
               <span class="ai-model-tag"><i class="fa-solid fa-microchip" aria-hidden="true"></i> LLM Agent + GNN Model Active</span>
             </div>
           </div>
 
           <div class="ai-intelligence-grid" id="ai-intelligence-grid">
-            
+
             <!-- Sub-panel 1: Pattern Discovery -->
             <article class="ai-feature-card" id="pattern-discovery-card">
               <div class="ai-card-header">
@@ -1076,9 +1078,9 @@
              SECTION H: BOTTOM ANALYTICS
              ==================================================================== -->
         <section class="analytics-overview" id="analytics-overview" aria-label="Operational Analytics and Monitoring">
-          
+
           <div class="analytics-grid" id="analytics-grid">
-            
+
             <!-- Panel 1: Query Latency -->
             <div class="panel analytics-panel" id="latency-panel">
               <div class="panel-header">
@@ -1184,11 +1186,11 @@
                 </div>
                 <span class="stat-badge purple">Live Audit</span>
               </div>
-              
+
               <!-- Recent Activity Log Container -->
               <div class="activity-feed-container" id="activity-feed-container">
                 <ol class="activity-list" id="activity-list">
-                  
+
                   <li class="activity-item">
                     <span class="activity-bullet blue" aria-hidden="true"></span>
                     <div class="activity-details">

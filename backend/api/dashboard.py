@@ -88,7 +88,7 @@ def get_dashboard_activity(db: Session = Depends(get_db)):
             {
                 "id": 4,
                 "bullet_color": "cyan",
-                "action": "User Dr. Elena Vance executed 12-hop exploratory traversal.",
+                "action": "User Mudasir Reyaz executed 12-hop exploratory traversal.",
                 "actor": "Web Console",
                 "timestamp": "1 hr 35 mins ago",
                 "datetime": None,

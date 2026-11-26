@@ -4,7 +4,7 @@
  * Enterprise Graph & Vector Analytics Controller (Phase 3)
  * Inspired by Amazon Neptune Analytics
  * =============================================================================
- * 
+ *
  * Architecture:
  * - LifeGraphConfig: Central platform configuration and endpoints
  * - LifeGraphState: Reactive application state
@@ -139,7 +139,7 @@
       },
       {
         id: 'person-vance',
-        label: 'Dr. Elena Vance',
+        label: 'Mudasir Reyaz',
         category: 'Person',
         uri: 'urn:lifegraph:person:7722',
         description: 'Lead Graph Architect & Distributed Systems Scientist',
@@ -243,7 +243,7 @@
       { id: 'e-hub-org', source: 'hub-root', target: 'org-graphlabs', label: 'HOSTED_AT', weight: 0.92 },
       { id: 'e-hub-prod', source: 'hub-root', target: 'product-core', label: 'POWERS', weight: 0.99 },
       { id: 'e-hub-loc', source: 'hub-root', target: 'loc-zurich', label: 'LOCATED_IN', weight: 0.91 },
-      
+
       { id: 'e-vance-graphlabs', source: 'person-vance', target: 'org-graphlabs', label: 'COLLABORATES_WITH', weight: 0.96 },
       { id: 'e-graphlabs-prod', source: 'org-graphlabs', target: 'product-core', label: 'INVESTED_IN', weight: 0.94 },
       { id: 'e-turing-prod', source: 'person-turing', target: 'product-core', label: 'PURCHASED', weight: 0.88 },
@@ -366,7 +366,7 @@
 
     simulateVectorSearch(queryPrompt, topK, threshold, metric) {
       const qTokens = queryPrompt.toLowerCase().split(/\W+/).filter(Boolean);
-      
+
       const scored = LifeGraphData.nodes.map(node => {
         const textBlob = `${node.label} ${node.description} ${node.category}`.toLowerCase();
         let matches = 0;
@@ -618,10 +618,10 @@
           e.stopPropagation();
           mockNodes.forEach(n => n.classList.remove('selected'));
           node.classList.add('selected');
-          
+
           const title = node.getAttribute('title') || node.id;
           UIController.showToast(`Selected Node: ${title}`, 'info');
-          
+
           // If K-Hop pick mode is active, bind it
           if (LifeGraphState.isPickMode) {
             const targetInput = document.getElementById('khop-target-node');
@@ -1018,7 +1018,7 @@
             <i class="fa-solid fa-circle-check placeholder-icon" style="color: var(--color-success)"></i>
             <p class="placeholder-title">${depth}-Hop Neighborhood Discovered</p>
             <p class="placeholder-desc">
-              Root <code>${rootUri}</code> expanded across <strong>${discovered.vertices.length} vertices</strong> and 
+              Root <code>${rootUri}</code> expanded across <strong>${discovered.vertices.length} vertices</strong> and
               <strong>${discovered.edges.length} connecting edges</strong> (${discovered.latencyMs}ms).
             </p>
             <div style="display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:8px;">
@@ -1052,7 +1052,7 @@
     performBfsTraversal(rootUri, depth) {
       // Find starting node
       const rootNode = LifeGraphData.nodes.find(n => n.uri === rootUri || n.id === rootUri) || LifeGraphData.nodes[1];
-      
+
       const visitedNodes = new Set([rootNode.id]);
       const visitedEdges = new Set();
       let currentFrontier = [rootNode.id];
@@ -1580,7 +1580,7 @@
       if (!profileBtn) return;
 
       profileBtn.addEventListener('click', () => {
-        this.showToast('Logged in as Dr. Elena Vance (Lead Graph Architect & Neptune Admin)', 'info');
+        this.showToast('Logged in as Mudasir Reyaz (Lead Graph Architect & Neptune Admin)', 'info');
       });
     },
 
@@ -1703,7 +1703,7 @@
       KHopExplorerManager.init();
       VectorSearchManager.init();
       AIIntelligenceManager.init();
-      
+
       // Initialize Visualizers (handles CDN loading gracefully)
       await GraphVisualizer.init();
       await AnalyticsManager.init();
