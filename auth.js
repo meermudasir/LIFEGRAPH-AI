@@ -34,7 +34,7 @@
       const hostname = window.location.hostname && window.location.hostname !== ''
         ? window.location.hostname
         : '127.0.0.1';
-      return `http://${hostname}:8000`;
+      return 'https://lifegraph-ai-xdur.onrender.com';
     },
 
     async init() {
