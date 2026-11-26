@@ -30,7 +30,7 @@
     version: '2.4 Enterprise',
     environment: 'us-east-neptune-prod',
     // Future FastAPI & Graph Backend Endpoints:
-    apiBaseUrl: 'http://127.0.0.1:8000/api/v1',
+    apiBaseUrl: 'https://lifegraph-ai-xdur.onrender.com/api/v1',
     endpoints: {
       health: '/health',
       graphQuery: '/graph/query',
